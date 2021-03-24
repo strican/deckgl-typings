@@ -699,11 +699,7 @@ declare module "@deck.gl/layers/geojson-layer/geojson-layer" {
 	import { CompositeLayerProps } from "@deck.gl/core/lib/composite-layer";
 	import { RGBAColor } from "@deck.gl/core/utils/color";
 	import { DataSet, WidthUnits } from "@deck.gl/core/lib/layer";
-	export type GeoJsonLayerProps<D> = Omit<CompositeLayerProps<D>, 'data'> & {
-		//Override data to accept raw GeoJSON data
-		//https://deck.gl/docs/api-reference/layers/geojson-layer#data
-		data?: GeoJSON.GeoJSON | DataSet<D> | Promise<DataSet<D>> | string;
-
+	export interface GeoJsonLayerPropsBase<D> extends CompositeLayerProps<D> {
 		//Render Options
 		filled?: boolean;
 		stroked?: boolean;
@@ -728,6 +724,11 @@ declare module "@deck.gl/layers/geojson-layer/geojson-layer" {
 		getRadius?: ((d: D) => number) | number;
 		getLineWidth?: ((d: D) => number) | number;
 		getElevation?: ((d: D) => number) | number;
+	}
+	export type GeoJsonLayerProps<D> = Omit<CompositeLayerProps<D>, 'data'> & {
+		//Override data to accept raw GeoJSON data
+		//https://deck.gl/docs/api-reference/layers/geojson-layer#data
+		data?: GeoJSON.GeoJSON | DataSet<D> | Promise<DataSet<D>> | string;
 	}
 	export default class GeoJsonLayer<D, P extends GeoJsonLayerProps<D> = GeoJsonLayerProps<D>> extends CompositeLayer<D, P> {
 		constructor(...props: GeoJsonLayerProps<D>[]);
