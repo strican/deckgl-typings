@@ -698,8 +698,12 @@ declare module "@deck.gl/layers/geojson-layer/geojson-layer" {
 	import { CompositeLayer } from "@deck.gl/core";
 	import { CompositeLayerProps } from "@deck.gl/core/lib/composite-layer";
 	import { RGBAColor } from "@deck.gl/core/utils/color";
-	import { WidthUnits } from "@deck.gl/core/lib/layer";
+	import { DataSet, WidthUnits } from "@deck.gl/core/lib/layer";
 	export interface GeoJsonLayerProps<D> extends CompositeLayerProps<D> {
+		//Override data to accept raw GeoJSON data
+		//https://deck.gl/docs/api-reference/layers/geojson-layer#data
+		data?: GeoJSON.GeoJSON | DataSet<D> | Promise<DataSet<D>> | string;
+
 		//Render Options
 		filled?: boolean;
 		stroked?: boolean;
