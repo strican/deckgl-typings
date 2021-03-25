@@ -8,10 +8,11 @@ declare module "@deck.gl/layers/arc-layer/arc-layer-fragment.glsl" {
 	export default _default;
 }
 declare module "@deck.gl/layers/arc-layer/arc-layer" {
-	import { LayerProps } from "@deck.gl/core/lib/layer";
+	import { DataSet, LayerProps } from "@deck.gl/core/lib/layer";
 	import { RGBAColor } from "@deck.gl/core/utils/color";
 	import { Position } from "@deck.gl/core/utils/positions";
 	export interface ArcLayerProps<D> extends LayerProps<D> {
+		data?: DataSet<D> | Promise<DataSet<D>> | string;
 		widthUnits?: string;
 		widthScale?: number;
 		widthMinPixels?: number;
@@ -44,11 +45,12 @@ declare module "@deck.gl/layers/bitmap-layer/bitmap-layer-fragment" {
 }
 declare module "@deck.gl/layers/bitmap-layer/bitmap-layer" {
 	import { Layer } from "@deck.gl/core";
-	import { LayerProps } from "@deck.gl/core/lib/layer";
+	import { DataSet, LayerProps } from "@deck.gl/core/lib/layer";
 	import { RGBAColor, RGBColor } from "@deck.gl/core/utils/color";
 	import { Position, ExtentsLeftBottomRightTop } from "@deck.gl/core/utils/positions";
 	export interface BitmapLayerProps<D> extends LayerProps<D> {
 		//Data
+		data?: DataSet<D> | Promise<DataSet<D>> | string;
 		image: any;
 		bounds:
 		| ExtentsLeftBottomRightTop
@@ -159,7 +161,7 @@ declare module "@deck.gl/layers/icon-layer/icon-manager" {
 }
 declare module "@deck.gl/layers/icon-layer/icon-layer" {
 	import { Layer } from "@deck.gl/core";
-	import { ObjectInfo, LayerProps, WidthUnits } from "@deck.gl/core/lib/layer";
+	import { DataSet, ObjectInfo, LayerProps, WidthUnits } from "@deck.gl/core/lib/layer";
 	import { Position, Position2D } from "@deck.gl/core/utils/positions";
 	import Texture2D from "@luma.gl/webgl/classes/texture-2d";
 	import { RGBAColor } from "@deck.gl/core/utils/color";
@@ -197,6 +199,7 @@ declare module "@deck.gl/layers/icon-layer/icon-layer" {
 	}
 
 	export interface IconLayerProps<D> extends LayerProps<D> {
+		data?: DataSet<D> | Promise<DataSet<D>> | string;
 		iconAtlas?: Texture2D | string;
 		iconMapping?: IconMapping;
 		sizeScale?: number;
@@ -241,10 +244,11 @@ declare module "@deck.gl/layers/line-layer/line-layer-fragment.glsl" {
 }
 declare module "@deck.gl/layers/line-layer/line-layer" {
 	import { Layer } from "@deck.gl/core";
-	import { LayerProps, WidthUnits } from "@deck.gl/core/lib/layer";
+	import { DataSet, LayerProps, WidthUnits } from "@deck.gl/core/lib/layer";
 	import { RGBAColor } from "@deck.gl/core/utils/color";
 	import { Position } from "@deck.gl/core/utils/positions";
 	export interface LineLayerProps<D> extends LayerProps<D> {
+		data?: DataSet<D> | Promise<DataSet<D>> | string;
 		widthUnits?: WidthUnits;
 		widthScale?: number;
 		widthMinPixels?: number;
@@ -273,10 +277,11 @@ declare module "@deck.gl/layers/point-cloud-layer/point-cloud-layer-fragment.gls
 }
 declare module "@deck.gl/layers/point-cloud-layer/point-cloud-layer" {
 	import { Layer } from "@deck.gl/core";
-	import { LayerProps } from "@deck.gl/core/lib/layer";
+	import { DataSet, LayerProps } from "@deck.gl/core/lib/layer";
 	import { RGBAColor } from "@deck.gl/core/utils/color";
 	import { Position } from "@deck.gl/core/utils/positions";
 	export interface PointCloudLayerProps<D> extends LayerProps<D> {
+		data?: DataSet<D> | Promise<DataSet<D>> | string;
 		sizeUnits?: string;
 		pointSize?: number;
 		material?: any;
@@ -301,10 +306,11 @@ declare module "@deck.gl/layers/scatterplot-layer/scatterplot-layer-fragment.gls
 }
 declare module "@deck.gl/layers/scatterplot-layer/scatterplot-layer" {
 	import { Layer } from "@deck.gl/core";
-	import { LayerProps, WidthUnits } from "@deck.gl/core/lib/layer";
+	import { DataSet, LayerProps, WidthUnits } from "@deck.gl/core/lib/layer";
 	import { Position } from "@deck.gl/core/utils/positions";
 	import { RGBAColor } from "@deck.gl/core/utils/color";
 	export interface ScatterplotLayerProps<D> extends LayerProps<D> {
+		data?: DataSet<D> | Promise<DataSet<D>> | string;
 		radiusScale?: number;
 		lineWidthUnits?: WidthUnits;
 		lineWidthScale?: number;
@@ -348,10 +354,11 @@ declare module "@deck.gl/layers/column-layer/column-layer-fragment.glsl" {
 declare module "@deck.gl/layers/column-layer/column-layer" {
 	import { Layer } from "@deck.gl/core";
 	import ColumnGeometry from "@deck.gl/layers/column-layer/column-geometry";
-	import { LayerProps, WidthUnits } from "@deck.gl/core/lib/layer";
+	import { DataSet, LayerProps, WidthUnits } from "@deck.gl/core/lib/layer";
 	import { Position, Position2D } from "@deck.gl/core/utils/positions";
 	import { RGBAColor } from "@deck.gl/core/utils/color";
 	export interface ColumnLayerProps<D> extends LayerProps<D> {
+		data?: DataSet<D> | Promise<DataSet<D>> | string;
 		diskResolution?: number;
 		radius?: number;
 		angle?: number;
@@ -395,10 +402,11 @@ declare module "@deck.gl/layers/column-layer/column-layer" {
 }
 declare module "@deck.gl/layers/column-layer/grid-cell-layer" {
 	import ColumnLayer from "@deck.gl/layers/column-layer/column-layer";
-	import { LayerProps } from "@deck.gl/core/lib/layer";
+	import { DataSet, LayerProps } from "@deck.gl/core/lib/layer";
 	import { Position2D } from "@deck.gl/core/utils/positions";
 	import { RGBAColor } from "@deck.gl/core/utils/color";
 	export interface GridCellLayerProps<D> extends LayerProps<D> {
+		data?: DataSet<D> | Promise<DataSet<D>> | string;
 		cellSize?: number;
 		coverage?: number;
 		elevationScale?: number;
@@ -441,7 +449,7 @@ declare module "@deck.gl/layers/path-layer/path-layer-fragment.glsl" {
 }
 declare module "@deck.gl/layers/path-layer/path-layer" {
 	import { Layer } from "@deck.gl/core";
-	import { LayerProps } from "@deck.gl/core/lib/layer";
+	import { DataSet, LayerProps } from "@deck.gl/core/lib/layer";
 	import { Position } from "@deck.gl/core/utils/positions";
 	import { RGBAColor } from "@deck.gl/core/utils/color";
 	export type TypedArray =
@@ -455,6 +463,7 @@ declare module "@deck.gl/layers/path-layer/path-layer" {
 		| Float32Array
 		| Float64Array;
 	export interface PathLayerProps<D> extends LayerProps<D> {
+		data?: DataSet<D> | Promise<DataSet<D>> | string;
 		widthUnits?: string;
 		widthScale?: number;
 		widthMinPixels?: number;
@@ -575,10 +584,11 @@ declare module "@deck.gl/layers/solid-polygon-layer/solid-polygon-layer-fragment
 }
 declare module "@deck.gl/layers/solid-polygon-layer/solid-polygon-layer" {
 	import { Layer } from "@deck.gl/core";
-	import { LayerProps } from "@deck.gl/core/lib/layer";
+	import { DataSet, LayerProps } from "@deck.gl/core/lib/layer";
 	import { Position } from "@deck.gl/core/utils/positions";
 	import { RGBAColor } from "@deck.gl/core/utils/color";
 	export interface SolidPolygonLayerProps<D> extends LayerProps<D> {
+		data?: DataSet<D> | Promise<DataSet<D>> | string;
 		filled?: boolean;
 		extruded?: boolean;
 		wireframe?: boolean;
@@ -636,10 +646,11 @@ declare module "@deck.gl/layers/utils" {
 declare module "@deck.gl/layers/polygon-layer/polygon-layer" {
 	import { CompositeLayer } from "@deck.gl/core";
 	import { CompositeLayerProps } from "@deck.gl/core/lib/composite-layer";
-	import { WidthUnits } from '@deck.gl/core/lib/layer';
+	import { DataSet, WidthUnits } from '@deck.gl/core/lib/layer';
 	import { Position } from "@deck.gl/core/utils/positions";
 	import { RGBAColor } from "@deck.gl/core/utils/color";
 	export interface PolygonLayerProps<D> extends CompositeLayerProps<D> {
+		data?: DataSet<D> | Promise<DataSet<D>> | string;
 		filled?: boolean;
 		stroked?: boolean;
 		extruded?: boolean;
@@ -916,11 +927,12 @@ declare module "@deck.gl/layers/text-layer/text-layer" {
 	import { FontSettings } from "@deck.gl/layers/text-layer/font-atlas-manager";
 	import { RGBAColor } from "@deck.gl/core/utils/color";
 	import { CompositeLayerProps } from "@deck.gl/core/lib/composite-layer";
-	import { ObjectInfo, WidthUnits } from "@deck.gl/core/lib/layer";
+	import { DataSet, ObjectInfo, WidthUnits } from "@deck.gl/core/lib/layer";
 	export type TextAnchor = "start" | "middle" | "end";
 	export type AlignmentBaseline = "top" | "center" | "bottom";
 
 	export interface TextLayerProps<D> extends CompositeLayerProps<D> {
+		data?: DataSet<D> | Promise<DataSet<D>> | string;
 		sizeScale?: number;
 		sizeUnits?: WidthUnits;
 		sizeMinPixels?: number;
